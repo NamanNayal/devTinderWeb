@@ -11,13 +11,14 @@ function Login() {
 
   const[emailId, setEmailId] = useState("june@gmail.com");
   const[password, setPasword] = useState("Jane@123");
+  const[error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () =>{
     
     try{
-      const res = await axios.post(BASE_URL,{
+      const res = await axios.post(BASE_URL +"/signin",{
       emailId,
       password,
     },{withCredentials: true} );
@@ -25,7 +26,7 @@ function Login() {
     dispatch(addUser(res.data));
     return navigate('/');
   }catch(err){
-    console.log(err);
+    setError(err?.response?.data || "Something went wrong");
   }
   }
 
@@ -55,6 +56,7 @@ function Login() {
 
 
     </div>
+    <p className='text-red-500'>{error}</p>
     <div className="card-actions justify-end my-4">
       <button className="btn btn-primary" onClick={handleLogin}>Login</button>
     </div> 
