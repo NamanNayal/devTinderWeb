@@ -7,7 +7,7 @@ import appStore from "./utils/appStore"
 import Feed from "./components/Feed"
 import Profile from "./components/Profile"
 import Connections from "./components/Connections";
-import Requests from "./components/Request"
+import Requests from "./components/Requests"
 
 function App() {
   return (
